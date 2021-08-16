@@ -102,12 +102,12 @@ public class HttpClientPoolUtil {
      * 发送get请求；带请求参数
      *
      * @param url    请求地址
-     * @param params 请求参数集合
+     * @param headers 请求头集合
      * @return 响应结果
      * @throws Exception 异常信息
      */
-    public static HttpClientResult doGet(String url, Map<String, String> params) throws Exception {
-        return doGet(url, null, params);
+    public static HttpClientResult doGet(String url, Map<String, String> headers) throws Exception {
+        return doGet(url, headers, null);
     }
 
     /**
@@ -125,22 +125,13 @@ public class HttpClientPoolUtil {
 
         // 创建访问的地址
         URIBuilder uriBuilder = new URIBuilder(url);
-
-        if (MapUtils.isNotEmpty(params)) {
-            params.forEach(uriBuilder::setParameter);
-        }
-
         // 创建http对象
         HttpGet httpGet = new HttpGet(uriBuilder.build());
-
         setRequestConfig(httpGet);
-
         // 设置请求头
         packageHeader(headers, httpGet);
-
         // 创建httpResponse对象
         CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
-
         try {
             // 执行请求并获得响应结果
             return getHttpClientResult(httpResponse);
@@ -405,6 +396,7 @@ public class HttpClientPoolUtil {
             HttpEntity entity = response.getEntity();
             if (code >= 200 && code < 300) {
                 if (entity != null) {
+                    int available = entity.getContent().available();
                     result = EntityUtils.toString(entity, HttpClientPoolUtil.ENCODING);
                 }
             } else {

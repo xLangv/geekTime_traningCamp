@@ -7,7 +7,7 @@ import java.net.Socket;
 
 // 单线程的socket程序
 public class HttpServer01 {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(8801);
         while (true) {
             try {
@@ -18,17 +18,20 @@ public class HttpServer01 {
             }
         }
     }
-    
+
     private static void service(Socket socket) throws IOException {
         PrintWriter printWriter = null;
         try {
-             printWriter = new PrintWriter(socket.getOutputStream(), true);
+            printWriter = new PrintWriter(socket.getOutputStream(), true);
             printWriter.println("HTTP/1.1 200 OK");
             printWriter.println("Content-Type:text/html;charset=utf-8");
             String body = "hello,nio1";
             printWriter.println("Content-Length:" + body.getBytes().length);
             printWriter.println();
             printWriter.write(body);
+            Thread.sleep(1000);
+            printWriter.close();
+            socket.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
