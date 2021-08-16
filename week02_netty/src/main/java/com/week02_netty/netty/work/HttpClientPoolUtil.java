@@ -158,6 +158,8 @@ public class HttpClientPoolUtil {
 
                     //开启监控线程,对异常和空闲线程进行关闭
                     monitorExecutor = Executors.newScheduledThreadPool(1);
+                    //initialDelay是说系统启动后，需要等待多久才开始执行。
+                    //period为固定周期时间，按照一定频率来重复执行任务。
                     monitorExecutor.scheduleAtFixedRate(() -> {
 
                         //关闭异常连接
