@@ -1,5 +1,6 @@
 package com.week02_netty.netty;
 
+import com.week02_netty.netty.netty.NettyHttpServer;
 import com.week02_netty.netty.work.HttpClientPoolUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,10 +23,11 @@ public class Week02NettyApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        try {
-            log.info("httpClient res:{}", HttpClientPoolUtil.doGet(url));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            NettyHttpServer.run();
+//            log.info("httpClient res:{}", HttpClientPoolUtil.doGet(url));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }

@@ -1,4 +1,4 @@
-package com.week02_netty.netty.work;
+package com.jvm.week01_jvm.work;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @GetMapping(value = "/")
     public String sayHello() {
-        return "Hello 8801";
+        System.out.println("有请求进来！");
+        return "Hello 8802";
     }
 }
