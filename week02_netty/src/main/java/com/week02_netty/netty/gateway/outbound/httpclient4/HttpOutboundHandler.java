@@ -80,7 +80,7 @@ public class HttpOutboundHandler {
     private void fetchGet(final FullHttpRequest inbound, final ChannelHandlerContext ctx, final String url) {
         final HttpGet httpGet = new HttpGet(url);
         httpGet.setHeader(HTTP.CONN_DIRECTIVE, HTTP.CONN_KEEP_ALIVE);
-        httpGet.setHeader("mao", inbound.headers().get("mao"));
+        //httpGet.setHeader("mao", inbound.headers().get("mao"));
 
         httpclient.execute(httpGet, new FutureCallback<HttpResponse>() {
             @Override
