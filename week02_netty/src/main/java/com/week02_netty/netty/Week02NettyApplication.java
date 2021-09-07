@@ -10,6 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 @SpringBootApplication
 @Slf4j
 public class Week02NettyApplication implements CommandLineRunner {
@@ -19,6 +22,19 @@ public class Week02NettyApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(Week02NettyApplication.class, args);
+    }
+
+    Queue<String> queue = new LinkedList<>();
+
+    public synchronized void addTask(String s) {
+        this.queue.add(s);
+    }
+
+    public synchronized String getTask() throws InterruptedException {
+        while (queue.isEmpty()) {
+            this.wait();
+        }
+        return queue.remove();
     }
 
     @Override
