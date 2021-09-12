@@ -30,7 +30,7 @@ public class App {
             user.setId(id);
             String username = resultSet.getString("username");
             user.setUsername(username);
-            int sex = resultSet.getInt("sex");
+            String sex = resultSet.getString("sex");
             user.setSex(sex);
             Date birthday = resultSet.getDate("birthday");
             user.setBirthday(birthday);

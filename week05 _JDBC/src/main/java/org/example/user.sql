@@ -30,7 +30,7 @@ CREATE TABLE `user`
 (
     id       BIGINT(20)   NOT NULL AUTO_INCREMENT COMMENT '主键',
     username VARCHAR(128) NOT NULL COMMENT '用户姓名',
-    sex      TINYINT      NOT NULL COMMENT '性别',
+    sex      CHAR(1)      NOT NULL COMMENT '性别',
     birthday DATE         NOT NULL COMMENT '生日',
     address  varchar(128) NOT NULL COMMENT '地址',
     PRIMARY KEY (`id`)

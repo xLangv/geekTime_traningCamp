@@ -21,7 +21,7 @@ import java.util.Date;
 public class User {
     private int id;
     private String username;
-    private int sex;
+    private String sex;
     private Date birthday;
     private String address;
 }

@@ -15,7 +15,7 @@
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>week05-spring-boot-autoconfigure</artifactId>
+            <artifactId>week05-spring-boot-au</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
